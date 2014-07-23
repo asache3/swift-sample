@@ -10,7 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
                             
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
+    //@IBOutlet weak var detailDescriptionLabel: UILabel!
 
 
     var detailItem: AnyObject? {
@@ -22,11 +22,20 @@ class DetailViewController: UIViewController {
 
     func configureView() {
         // Update the user interface for the detail item.
-        if let detail: AnyObject = self.detailItem {
-            if let label = self.detailDescriptionLabel {
-                label.text = detail.description
-            }
-        }
+        //if let detail: AnyObject = self.detailItem {
+            //if let label = self.detailDescriptionLabel {
+                //label.text = detail.description
+            //}
+        //}
+        
+        let label = UILabel(frame: CGRect(x: 0, y: 142, width: 320, height: 284))
+        label.text = "Hello, Swift!"
+        label.textAlignment = NSTextAlignment.Center
+        label.font = UIFont.systemFontOfSize(24)
+        label.textColor = UIColor.blueColor()
+        label.backgroundColor = UIColor.yellowColor()
+        
+        self.view.addSubview(label)
     }
 
     override func viewDidLoad() {

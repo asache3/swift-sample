@@ -54,14 +54,24 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 3
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
 
         //let object = objects[indexPath.row] as NSDate
-        cell.textLabel.text = "Label\(indexPath.row)"
+        switch indexPath.row {
+        case 0:
+            cell.textLabel.text = "Label"
+        case 1:
+            cell.textLabel.text = "Button"
+        case 2:
+            cell.textLabel.text = "Slider"
+        default:
+            cell.textLabel.text = ""
+        }
+        
         return cell
     }
 

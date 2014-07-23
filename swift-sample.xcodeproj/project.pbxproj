@@ -13,7 +13,6 @@
 		1E90F34D197F656E00F95859 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E90F34B197F656E00F95859 /* Main.storyboard */; };
 		1E90F34F197F656E00F95859 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E90F34E197F656E00F95859 /* Images.xcassets */; };
 		1E90F35B197F656E00F95859 /* swift_sampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90F35A197F656E00F95859 /* swift_sampleTests.swift */; };
-		1E90F367197FB81700F95859 /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90F366197FB81700F95859 /* LabelViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +36,6 @@
 		1E90F354197F656E00F95859 /* swift-sampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "swift-sampleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E90F359197F656E00F95859 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E90F35A197F656E00F95859 /* swift_sampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swift_sampleTests.swift; sourceTree = "<group>"; };
-		1E90F366197FB81700F95859 /* LabelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +79,6 @@
 			children = (
 				1E90F345197F656E00F95859 /* AppDelegate.swift */,
 				1E90F349197F656E00F95859 /* DetailViewController.swift */,
-				1E90F366197FB81700F95859 /* LabelViewController.swift */,
 				1E90F347197F656E00F95859 /* MasterViewController.swift */,
 				1E90F34B197F656E00F95859 /* Main.storyboard */,
 				1E90F34E197F656E00F95859 /* Images.xcassets */,
@@ -217,7 +214,6 @@
 				1E90F34A197F656E00F95859 /* DetailViewController.swift in Sources */,
 				1E90F348197F656E00F95859 /* MasterViewController.swift in Sources */,
 				1E90F346197F656E00F95859 /* AppDelegate.swift in Sources */,
-				1E90F367197FB81700F95859 /* LabelViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

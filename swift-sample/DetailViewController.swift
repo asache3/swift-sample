@@ -13,7 +13,7 @@ class DetailViewController: UIViewController {
     //@IBOutlet weak var detailDescriptionLabel: UILabel!
 
 
-    var detailItem: AnyObject? {
+    var detailItem: Int? {
         didSet {
             // Update the view.
             self.configureView()
@@ -22,13 +22,21 @@ class DetailViewController: UIViewController {
 
     func configureView() {
         // Update the user interface for the detail item.
-        //if let detail: AnyObject = self.detailItem {
-            //if let label = self.detailDescriptionLabel {
-                //label.text = detail.description
-            //}
-        //}
+        if let detail: Int = self.detailItem {
+            switch detail {
+            case 0:
+                labelView()
+            default:
+                defaultView()
+            }
+        }
+    }
+    
+    func labelView() {
+        self.navigationItem.title = "Label"
         
         let label = UILabel(frame: CGRect(x: 0, y: 142, width: 320, height: 284))
+        
         label.text = "Hello, Swift!"
         label.textAlignment = NSTextAlignment.Center
         label.font = UIFont.systemFontOfSize(24)
@@ -36,6 +44,20 @@ class DetailViewController: UIViewController {
         label.backgroundColor = UIColor.yellowColor()
         
         self.view.addSubview(label)
+
+    }
+    
+    func defaultView() {
+        self.navigationItem.title = "Sorry"
+        
+        let label = UILabel(frame: CGRect(x: 0, y: 142, width: 320, height: 284))
+        
+        label.text = "Under Construction"
+        label.textAlignment = NSTextAlignment.Center
+        label.font = UIFont.systemFontOfSize(24)
+        
+        self.view.addSubview(label)
+
     }
 
     override func viewDidLoad() {

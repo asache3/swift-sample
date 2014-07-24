@@ -10,7 +10,7 @@ import UIKit
 
 class MasterViewController: UITableViewController {
 
-    var objects = NSMutableArray()
+    //var objects = NSMutableArray()
 
 
     override func awakeFromNib() {
@@ -44,7 +44,12 @@ class MasterViewController: UITableViewController {
 
     // MARK: - Segues
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        
+        if segue.identifier == "showDetail" {
+            let indexPath = self.tableView.indexPathForSelectedRow()
+            let object = indexPath.row as Int
+            (segue.destinationViewController as DetailViewController).detailItem = object
+        }
+
     }
 
     // MARK: - Table View

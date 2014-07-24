@@ -59,7 +59,7 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 11
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -72,7 +72,23 @@ class MasterViewController: UITableViewController {
         case 1:
             cell.textLabel.text = "Button"
         case 2:
+            cell.textLabel.text = "Switch"
+        case 3:
             cell.textLabel.text = "Slider"
+        case 4:
+            cell.textLabel.text = "TextField"
+        case 5:
+            cell.textLabel.text = "TextView"
+        case 6:
+            cell.textLabel.text = "DatePicker"
+        case 7:
+            cell.textLabel.text = "Picker"
+        case 8:
+            cell.textLabel.text = "AlertView"
+        case 9:
+            cell.textLabel.text = "ActionSheet"
+        case 10:
+            cell.textLabel.text = "MotionEffect"
         default:
             cell.textLabel.text = ""
         }

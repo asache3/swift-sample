@@ -14,6 +14,8 @@ class DetailViewController: UIViewController {
     var button = UIButton(frame: CGRectMake(110, 259, 100, 50))
     var uiswitch = UISwitch(frame: CGRectMake(140, 259, 100, 50))
     var slider = UISlider(frame: CGRectMake(60, 259, 200, 50))
+    var textfield = UITextField(frame: CGRectMake(85, 259, 150, 50))
+    var textview = UITextView(frame: CGRectMake(85, 209, 150, 150))
 
     var detailItem: Int? {
         didSet {
@@ -33,6 +35,10 @@ class DetailViewController: UIViewController {
                 switchView()
             } else if detail == 3 {
                 sliderView()
+            } else if detail == 4 {
+                textFieldView()
+            } else if detail == 5 {
+                textViewView()
             } else {
                 defaultView()
             }
@@ -109,6 +115,38 @@ class DetailViewController: UIViewController {
     
     func changeSlider(sender: UISlider) {
         NSLog("Slider value is \(self.slider.value).")
+    }
+    
+    // TextField
+    func textFieldView() {
+        self.navigationItem.title = "TextField"
+        
+        //self.textfield.text = "TextField"
+        self.textfield.placeholder = "Placeholder"
+        self.textfield.textAlignment = NSTextAlignment.Center
+        self.textfield.textColor = UIColor.blueColor()
+        self.textfield.backgroundColor = UIColor.lightGrayColor()
+        self.textfield.font = UIFont.systemFontOfSize(20)
+        self.textfield.keyboardType = UIKeyboardType.ASCIICapable
+        self.textfield.layer.borderWidth = 1
+        //self.textfield.borderStyle = UITextBorderStyle.Line
+        
+        self.view.addSubview(textfield)
+    }
+    
+    // TextView
+    func textViewView() {
+        self.navigationItem.title = "TextView"
+        
+        self.textview.text = "TextView"
+        self.textview.textColor = UIColor.greenColor()
+        //self.textview.backgroundColor = UIColor.cyanColor()
+        self.textview.font = UIFont.systemFontOfSize(14)
+        self.textview.textAlignment = NSTextAlignment.Right
+        self.textview.keyboardType = UIKeyboardType.URL
+        self.textview.layer.borderWidth = 1
+        
+        self.view.addSubview(textview)
     }
     
     // Other(Under Construction)

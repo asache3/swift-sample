@@ -16,6 +16,10 @@ class DetailViewController: UIViewController {
     var slider = UISlider(frame: CGRectMake(60, 259, 200, 50))
     var textfield = UITextField(frame: CGRectMake(85, 259, 150, 50))
     var textview = UITextView(frame: CGRectMake(85, 209, 150, 150))
+    var datepicker = UIDatePicker(frame: CGRectMake(0, 184, 320, 200))
+    var picker = UIPickerView(frame: CGRectMake(0, 184, 320, 200))
+    
+    var tea_list: [String] = ["ダージリン", "アールグレイ", "アッサム", "オレンジペコ"]
 
     var detailItem: Int? {
         didSet {
@@ -39,6 +43,10 @@ class DetailViewController: UIViewController {
                 textFieldView()
             } else if detail == 5 {
                 textViewView()
+            } else if detail == 6 {
+                datePickerView()
+            } else if detail == 7 {
+                pickerView()
             } else {
                 defaultView()
             }
@@ -149,6 +157,37 @@ class DetailViewController: UIViewController {
         self.view.addSubview(textview)
     }
     
+    // DatePicker
+    func datePickerView() {
+        self.navigationItem.title = "DatePicker"
+        
+        self.datepicker.datePickerMode = UIDatePickerMode.DateAndTime
+        self.datepicker.minuteInterval = 5
+        self.datepicker.addTarget(self, action: "changeDatePicker:", forControlEvents: UIControlEvents.ValueChanged)
+        
+        self.view.addSubview(datepicker)
+    }
+    
+    func changeDatePicker(sender: UIDatePicker) {
+        let dateFormatter = NSDateFormatter()
+        
+        dateFormatter.locale = NSLocale(localeIdentifier: "ja_JP")
+        dateFormatter.timeStyle = .MediumStyle
+        dateFormatter.dateStyle = .MediumStyle
+        
+        NSLog("\(dateFormatter.stringFromDate(self.datepicker.date))")
+    }
+    
+    // Picker
+    func pickerView() {
+        self.navigationItem.title = "Picker"
+        
+        self.picker.dataSource = self
+        self.picker.delegate = self
+        
+        self.view.addSubview(picker)
+    }
+    
     // Other(Under Construction)
     func defaultView() {
         self.navigationItem.title = "Sorry"
@@ -173,7 +212,29 @@ class DetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
+
+// UIPickerViewDataSource
+extension DetailViewController: UIPickerViewDataSource {
+    func numberOfComponentsInPickerView(pickerView: UIPickerView!) -> Int {
+        return 1
+    }
+
+    func pickerView(pickerView: UIPickerView!, numberOfRowsInComponent component: Int) -> Int {
+        return self.tea_list.count
+    }
+}
+
+// UIPickerViewDelegate
+extension DetailViewController: UIPickerViewDelegate {
+    func pickerView(pickerVvew: UIPickerView!, titleForRow row: Int, forComponent component: Int) -> String! {
+        return self.tea_list[row]
+    }
+    
+    func pickerView(pickerView: UIPickerView!, didSelectRow row: Int, inComponent component: Int) {
+        NSLog("%@ was selected", self.tea_list[row])
+    }
+}
+
+
 

@@ -18,6 +18,8 @@ class DetailViewController: UIViewController {
     var textview = UITextView(frame: CGRectMake(85, 209, 150, 150))
     var datepicker = UIDatePicker(frame: CGRectMake(0, 184, 320, 200))
     var picker = UIPickerView(frame: CGRectMake(0, 184, 320, 200))
+    var alertButton = UIButton(frame: CGRectMake(110, 209, 100, 50))
+    var actionSheetButton = UIButton(frame: CGRectMake(85, 309, 150, 50))
     
     var tea_list: [String] = ["ダージリン", "アールグレイ", "アッサム", "オレンジペコ"]
 
@@ -47,6 +49,8 @@ class DetailViewController: UIViewController {
                 datePickerView()
             } else if detail == 7 {
                 pickerView()
+            } else if detail == 8 {
+                alertViewView()
             } else {
                 defaultView()
             }
@@ -186,6 +190,68 @@ class DetailViewController: UIViewController {
         self.picker.delegate = self
         
         self.view.addSubview(picker)
+    }
+    
+    // AlertView
+    func alertViewView() {
+        self.navigationItem.title = "AlertView"
+        
+        self.alertButton.setTitle("Alert", forState: .Normal)
+        self.alertButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        self.alertButton.layer.cornerRadius = 10
+        self.alertButton.layer.borderWidth = 1
+        self.alertButton.addTarget(self, action: "tapAlertBtn:", forControlEvents:.TouchUpInside)
+        
+        self.actionSheetButton.setTitle("Action Sheet", forState: .Normal)
+        self.actionSheetButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        self.actionSheetButton.layer.cornerRadius = 10
+        self.actionSheetButton.layer.borderWidth = 1
+        self.actionSheetButton.addTarget(self, action: "tapActionSheetBtn:", forControlEvents:.TouchUpInside)
+        
+        self.view.addSubview(alertButton)
+        self.view.addSubview(actionSheetButton)
+    }
+    
+    func tapAlertBtn(sender: UIButton) {
+        let title: String = "Title"
+        let message: String = "Message"
+        let cancelTitle: String = "Cancel"
+        let okTitle: String = "OK"
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        
+        let cancelAction = UIAlertAction(title: cancelTitle, style: .Cancel) { action in
+            NSLog("Cancel was selected on Alert")
+        }
+        
+        let okAction = UIAlertAction(title: okTitle, style: .Default) { action in
+            NSLog("OK was selected on Alert")
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func tapActionSheetBtn(sender: UIButton) {
+        let destructiveTitle: String = "Delete"
+        let otherTitle: String = "Cancel"
+        
+        let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        
+        let destructiveAction = UIAlertAction(title: destructiveTitle, style: .Destructive) { action in
+            NSLog("Delete was selected on ActionSheet")
+        }
+        
+        let otherAction = UIAlertAction(title: otherTitle, style: .Default) { action in
+            NSLog("Cancel was selected on ActionSheet")
+        }
+        
+        actionSheetController.addAction(destructiveAction)
+        actionSheetController.addAction(otherAction)
+        
+        presentViewController(actionSheetController, animated: true, completion: nil)
     }
     
     // Other(Under Construction)

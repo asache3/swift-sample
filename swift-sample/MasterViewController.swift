@@ -11,6 +11,7 @@ import UIKit
 class MasterViewController: UITableViewController {
 
     //var objects = NSMutableArray()
+    var objects: [String] = ["Label", "Button", "Switch", "Slider", "TextField", "TextView", "DatePicker", "Picker", "AlertView"]
 
 
     override func awakeFromNib() {
@@ -59,39 +60,14 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 11
+        return objects.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
 
         //let object = objects[indexPath.row] as NSDate
-        switch indexPath.row {
-        case 0:
-            cell.textLabel.text = "Label"
-        case 1:
-            cell.textLabel.text = "Button"
-        case 2:
-            cell.textLabel.text = "Switch"
-        case 3:
-            cell.textLabel.text = "Slider"
-        case 4:
-            cell.textLabel.text = "TextField"
-        case 5:
-            cell.textLabel.text = "TextView"
-        case 6:
-            cell.textLabel.text = "DatePicker"
-        case 7:
-            cell.textLabel.text = "Picker"
-        case 8:
-            cell.textLabel.text = "AlertView"
-        case 9:
-            cell.textLabel.text = "ActionSheet"
-        case 10:
-            cell.textLabel.text = "MotionEffect"
-        default:
-            cell.textLabel.text = ""
-        }
+        cell.textLabel.text = objects[indexPath.row]
         
         return cell
     }

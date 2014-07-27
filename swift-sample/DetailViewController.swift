@@ -51,6 +51,10 @@ class DetailViewController: UIViewController {
                 pickerView()
             } else if detail == 8 {
                 alertViewView()
+            } else if detail == 9 {
+                tapGestureView()
+            } else if detail == 10 {
+                longPressGestureView()
             } else {
                 defaultView()
             }
@@ -252,6 +256,52 @@ class DetailViewController: UIViewController {
         actionSheetController.addAction(otherAction)
         
         presentViewController(actionSheetController, animated: true, completion: nil)
+    }
+    
+    // TapGesture
+    func tapGestureView() {
+        self.navigationItem.title = "TapGesture"
+        
+        let label = UILabel(frame: CGRect(x: 0, y: 142, width: 320, height: 284))
+        
+        label.text = "Tap Here"
+        label.textAlignment = NSTextAlignment.Center
+        label.font = UIFont.systemFontOfSize(20)
+        
+        self.view.addSubview(label)
+        
+        var tapGesture = UITapGestureRecognizer(target: self, action: "tapTapGesture:")
+        
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    func tapTapGesture(recognizer: UITapGestureRecognizer) {
+        NSLog("Tapped")
+    }
+    
+    // LongPressGesture
+    func longPressGestureView() {
+        self.navigationItem.title = "LongPressGesture"
+        
+        let label = UILabel(frame: CGRect(x: 0, y: 142, width: 320, height: 284))
+        
+        label.text = "LongPress Here"
+        label.textAlignment = NSTextAlignment.Center
+        label.font = UIFont.systemFontOfSize(20)
+        
+        self.view.addSubview(label)
+        
+        var longPressGesture = UILongPressGestureRecognizer(target: self, action: "longPressGesture:")
+        
+        self.view.addGestureRecognizer(longPressGesture)
+    }
+    
+    func longPressGesture(recognizer: UILongPressGestureRecognizer) {
+        if(recognizer.state == UIGestureRecognizerState.Began) {
+            NSLog("LongPressed began")
+        } else if (recognizer.state == UIGestureRecognizerState.Ended) {
+            NSLog("LongPressed ended")
+        }
     }
     
     // Other(Under Construction)

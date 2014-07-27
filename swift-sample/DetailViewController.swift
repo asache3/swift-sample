@@ -55,6 +55,10 @@ class DetailViewController: UIViewController {
                 tapGestureView()
             } else if detail == 10 {
                 longPressGestureView()
+            } else if detail == 11 {
+                pinchGestureView()
+            } else if detail == 12 {
+                swipeGestureView()
             } else {
                 defaultView()
             }
@@ -302,6 +306,53 @@ class DetailViewController: UIViewController {
         } else if (recognizer.state == UIGestureRecognizerState.Ended) {
             NSLog("LongPressed ended")
         }
+    }
+    
+    // PinchGesture
+    func pinchGestureView() {
+        self.navigationItem.title = "PinchGesture"
+        
+        let label = UILabel(frame: CGRect(x: 0, y: 142, width: 320, height: 284))
+        
+        label.text = "Pinch Here"
+        label.textAlignment = NSTextAlignment.Center
+        label.font = UIFont.systemFontOfSize(20)
+        
+        self.view.addSubview(label)
+        
+        var pinchGesture = UIPinchGestureRecognizer(target: self, action: "pinchGesture:")
+
+        self.view.addGestureRecognizer(pinchGesture)
+    }
+    
+    func pinchGesture(recognizer: UIPinchGestureRecognizer) {
+        if(recognizer.scale < 1.0) {
+            NSLog("Decrease \(recognizer.scale)")
+        } else {
+            NSLog("Increase \(recognizer.scale)")
+        }
+    }
+    
+    // SwipeGesture
+    func swipeGestureView() {
+        self.navigationItem.title = "SwipeGesture"
+        
+        let label = UILabel(frame: CGRect(x: 0, y: 142, width: 320, height: 284))
+        
+        label.text = "Swipe Left Here"
+        label.textAlignment = NSTextAlignment.Center
+        label.font = UIFont.systemFontOfSize(20)
+        
+        self.view.addSubview(label)
+        
+        var swipeGesture = UISwipeGestureRecognizer(target: self, action: "swipeGesture:")
+        swipeGesture.direction = UISwipeGestureRecognizerDirection.Left
+        
+        self.view.addGestureRecognizer(swipeGesture)
+    }
+    
+    func swipeGesture(recognizer: UISwipeGestureRecognizer) {
+        NSLog("Swipe left")
     }
     
     // Other(Under Construction)

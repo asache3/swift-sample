@@ -11,7 +11,7 @@ import UIKit
 class MasterViewController: UITableViewController {
 
     //var objects = NSMutableArray()
-    var objects: [String] = ["Label", "Button", "Switch", "Slider", "TextField", "TextView", "DatePicker", "Picker", "AlertView", "TapGesture", "LongPressGesture"]
+    var objects: [String] = ["Label", "Button", "Switch", "Slider", "TextField", "TextView", "DatePicker", "Picker", "AlertView", "TapGesture", "LongPressGesture", "PinchGesture", "SwipeGesture"]
 
 
     override func awakeFromNib() {
@@ -56,7 +56,7 @@ class MasterViewController: UITableViewController {
     // MARK: - Table View
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

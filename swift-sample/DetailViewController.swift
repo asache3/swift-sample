@@ -59,6 +59,10 @@ class DetailViewController: UIViewController {
                 pinchGestureView()
             } else if detail == 12 {
                 swipeGestureView()
+            } else if detail == 13 {
+                panGestureView()
+            } else if detail == 14 {
+                rotateGestureView()
             } else {
                 defaultView()
             }
@@ -272,10 +276,9 @@ class DetailViewController: UIViewController {
         label.textAlignment = NSTextAlignment.Center
         label.font = UIFont.systemFontOfSize(20)
         
-        self.view.addSubview(label)
-        
         var tapGesture = UITapGestureRecognizer(target: self, action: "tapTapGesture:")
         
+        self.view.addSubview(label)
         self.view.addGestureRecognizer(tapGesture)
     }
     
@@ -293,10 +296,9 @@ class DetailViewController: UIViewController {
         label.textAlignment = NSTextAlignment.Center
         label.font = UIFont.systemFontOfSize(20)
         
-        self.view.addSubview(label)
-        
         var longPressGesture = UILongPressGestureRecognizer(target: self, action: "longPressGesture:")
         
+        self.view.addSubview(label)
         self.view.addGestureRecognizer(longPressGesture)
     }
     
@@ -318,10 +320,9 @@ class DetailViewController: UIViewController {
         label.textAlignment = NSTextAlignment.Center
         label.font = UIFont.systemFontOfSize(20)
         
-        self.view.addSubview(label)
-        
         var pinchGesture = UIPinchGestureRecognizer(target: self, action: "pinchGesture:")
 
+        self.view.addSubview(label)
         self.view.addGestureRecognizer(pinchGesture)
     }
     
@@ -343,17 +344,59 @@ class DetailViewController: UIViewController {
         label.textAlignment = NSTextAlignment.Center
         label.font = UIFont.systemFontOfSize(20)
         
-        self.view.addSubview(label)
-        
         var swipeGesture = UISwipeGestureRecognizer(target: self, action: "swipeGesture:")
         swipeGesture.direction = UISwipeGestureRecognizerDirection.Left
         
+        self.view.addSubview(label)
         self.view.addGestureRecognizer(swipeGesture)
     }
     
     func swipeGesture(recognizer: UISwipeGestureRecognizer) {
         NSLog("Swipe left")
     }
+    
+    // PanGesture
+    func panGestureView() {
+        self.navigationItem.title = "PanGesture"
+        
+        let label = UILabel(frame: CGRect(x: 0, y: 142, width: 320, height: 284))
+        
+        label.text = "Pan Here"
+        label.textAlignment = NSTextAlignment.Center
+        label.font = UIFont.systemFontOfSize(20)
+        
+        var panGesture = UIPanGestureRecognizer(target: self, action: "panGesture:")
+        
+        self.view.addSubview(label)
+        self.view.addGestureRecognizer(panGesture)
+    }
+    
+    func panGesture(recognizer: UIPanGestureRecognizer) {
+        var loc: CGPoint = recognizer.translationInView(self.view)
+        NSLog("Pan x=\(loc.x), y=\(loc.y)")
+    }
+    
+    // RotateGesture
+    func rotateGestureView() {
+        self.navigationItem.title = "RotateGesture"
+        
+        
+        let label = UILabel(frame: CGRect(x: 0, y: 142, width: 320, height: 284))
+        
+        label.text = "Rotate Here"
+        label.textAlignment = NSTextAlignment.Center
+        label.font = UIFont.systemFontOfSize(20)
+        
+        var rotateGesture = UIRotationGestureRecognizer(target: self, action: "rotateGesture:")
+        
+        self.view.addSubview(label)
+        self.view.addGestureRecognizer(rotateGesture)
+    }
+    
+    func rotateGesture(recognizer: UIRotationGestureRecognizer) {
+        NSLog("Rotate radian=\(recognizer.rotation)")
+    }
+    
     
     // Other(Under Construction)
     func defaultView() {

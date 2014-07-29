@@ -63,6 +63,8 @@ class DetailViewController: UIViewController {
                 panGestureView()
             } else if detail == 14 {
                 rotateGestureView()
+            } else if detail == 15 {
+                imageViewView()
             } else {
                 defaultView()
             }
@@ -397,6 +399,23 @@ class DetailViewController: UIViewController {
         NSLog("Rotate radian=\(recognizer.rotation)")
     }
     
+    // ImageView
+    func imageViewView() {
+        self.navigationItem.title = "ImageView"
+        
+        let img1:UIImage = UIImage(named: "profile.jpg")
+        let imageView1:UIImageView = UIImageView(image: img1)
+        imageView1.frame = CGRect(x: 70, y: 150, width: 180, height: 180)
+        
+        let url2:NSURL = NSURL(string: "http://image.gora.golf.rakuten.co.jp/img/header_h1.gif")
+        let data2:NSData = NSData(contentsOfURL: url2)
+        let img2:UIImage = UIImage(data: data2)
+        let imageView2:UIImageView = UIImageView(image: img2)
+        imageView2.frame = CGRect(x: 115, y: 400, width: 89, height: 44)
+        
+        self.view.addSubview(imageView1)
+        self.view.addSubview(imageView2)
+    }
     
     // Other(Under Construction)
     func defaultView() {

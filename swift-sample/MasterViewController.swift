@@ -11,7 +11,7 @@ import UIKit
 class MasterViewController: UITableViewController {
 
     //var objects = NSMutableArray()
-    var objects: [String] = ["Label", "Button", "Switch", "Slider", "TextField", "TextView", "DatePicker", "Picker", "AlertView", "TapGesture", "LongPressGesture", "PinchGesture", "SwipeGesture", "PanGesture", "RotateGesture"]
+    var objects: [String] = ["Label", "Button", "Switch", "Slider", "TextField", "TextView", "DatePicker", "Picker", "AlertView", "TapGesture", "LongPressGesture", "PinchGesture", "SwipeGesture", "PanGesture", "RotateGesture", "ImageView"]
 
 
     override func awakeFromNib() {
